@@ -1,0 +1,36 @@
+body {
+    background: url('/static/image/background_img.jpg');
+    background-size: cover;
+}
+.navbar-custom {
+    background-color: #C4BEE2;
+}
+.search-bar {
+    position: relative;
+    width: 600px;
+}
+.search-input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+.submit-btn {
+    position: absolute;
+    right: 0px;
+}
+.nav-links {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.nav-logout{
+    border: 1px solid #bbb;
+    padding: 7px;
+    margin-left: 5px;
+}
+.nav-mypage{
+    border: 1px solid #bbb;
+    padding: 7px;
+    margin-right: 5px;
+}
