@@ -6,7 +6,7 @@ def index(request):
         
     }
     return render(request, 'articles/index.html', context)
-
+    
 # def detail(request, pk):
 #     context = {
         
