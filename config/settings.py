@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     # EXTERNAL APPS
     'django_extensions',
+    'django_bootstrap5',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -113,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-KR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
