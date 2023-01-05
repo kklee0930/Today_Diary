@@ -14,9 +14,9 @@
   </head>
 
   <body>
-    <div class="container m-auto">
+    <div class="container">
       <h1 class="form-title text-center my-5">Today's Diary</h1>
-      <form class="signup-form m-auto" action="{% url 'accounts:signup' %}" method="POST" style="width:40%; padding:30px">
+      <form class="signup-form m-auto" action="" enctype="multipart/form-data" method="POST" style="width:40%; padding:30px">
         {% csrf_token %}
         {% comment %} {% for field in form %}
           {{ field.errors }}
@@ -26,9 +26,7 @@
           </div>
         {% endfor %} {% endcomment %}
         {% bootstrap_form form %}
-        <div class="text-center">
-          <input class="signup-btn text-center" type="submit" value="회원가입">
-        </div>
+        {% bootstrap_button button_type="submit" button_class="signup-btn container" content="회원가입" %}
       </form>
     </div>
 

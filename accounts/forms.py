@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django import forms
 
@@ -10,13 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
             "username",
             "email",
             "birthdate",
-            'password1',
-            'password2',
         )
         help_texts = {
-            'username': None,
-            'password1': None,
-            'password2': None,
+            # 'username': None,
+            # 'password1': None,
+            # 'password2': None,
         }
         widgets = {
             "name": forms.TextInput(
@@ -49,8 +47,5 @@ class CustomUserCreationForm(UserCreationForm):
             "name": "📛이름",
             "username": "🆔아이디",
             "email": "📧이메일",
-            "birthdate": "🎂생년월일", 
-            "password1": "비밀번호",
-            "password2": "비밀번호확인",
+            "birthdate": "🎂생년월일",
         }
-

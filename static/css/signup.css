@@ -35,8 +35,12 @@ body {
     font-size: large;
 }
 .signup-btn {
-    background-color: #6f5f90;
-    border: 1px solid #6f5f90;
-    color: #ffffff;
-    width: 100%;
+    background-color: #6f5f90 !important;
+    color: #ffffff !important;
+    width: 100% !important;
+}
+.signup-btn:hover {
+    background: url('/static/image/background_img.jpg') !important;
+    font-weight: bold;
+    /* background-color: beige !important; */
 }

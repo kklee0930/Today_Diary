@@ -7,9 +7,10 @@ from django.contrib.auth.forms import AuthenticationForm
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        
         if form.is_valid():
-            user = form.save(commit=False) # 회원가입 후 바로 로그인
-            auth_login(request, user)
+            user = form.save() 
+            auth_login(request, user) # 회원가입 후 바로 로그인
             return redirect('articles:index')
             
     else:

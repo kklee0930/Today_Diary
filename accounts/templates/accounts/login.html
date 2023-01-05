@@ -16,14 +16,16 @@
   <body>
     <div class="container">
       <h1 class="form-title text-center my-5">Today's Diary</h1>
-      <form class="login-form m-auto" action="{% url 'accounts:login' %}" method="POST" style="width:40%; padding:30px">
+      <form class="login-form m-auto" action="" method="POST" style="width:40%; padding:30px">
         <p class="greetings text-center">다시 돌아오신 걸 환영해요🖐️</p>
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="text-center">
-          <input class="login-btn text-center mt-4" type="submit" value="로그인">
+          <input class="login-btn text-center mt-4" type="submit" value="🔒로그인">
         </div>
-        <button class="login-btn mt-3" onclick="{% url 'accounts:signup' %}">회원가입</button>
+        <div class="d-flex justify-content-end">
+          <a class="text-decoration-none mt-3 link-dark" href="{% url 'accounts:signup' %}">회원가입</a>
+        </div>
       </form>
     </div>
 

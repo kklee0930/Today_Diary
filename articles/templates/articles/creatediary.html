@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/creatediary.css' %}">
+  <div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="form-div w-50 p-4">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="text-center mt-5">
+          <input type="submit" value="일기작성">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

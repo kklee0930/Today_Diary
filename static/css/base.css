@@ -16,10 +16,13 @@
     font-weight: normal;
     font-style: normal;
 }
+* {
+    font-family: 'Cafe24Oneprettynight';
+}
 body {
     background: url('/static/image/background_img.jpg');
     background-size: cover;
-    font-family: 'Cafe24Oneprettynight';
+    /* font-family: 'Cafe24Oneprettynight'; */
 }
 .navbar-custom {
     background-color: #C4BEE2;
