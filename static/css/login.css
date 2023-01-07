@@ -22,6 +22,9 @@ body {
     font-family: 'Cafe24Oneprettynight';
     height: 100%;
 }
+.wrapper {
+    min-height: 85vh;
+}
 .form-title {
     color: #ffffff;
     font-family: 'Cafe24Oneprettynight';
@@ -35,10 +38,14 @@ body {
     font-size: large;
 }
 .login-btn {
-    background-color: #6f5f90;
-    border: 1px solid #6f5f90;
-    color: #ffffff;
+    background-color: #6f5f90 !important;
+    color: #ffffff !important;
     width: 100%;
+}
+.login-btn:hover {
+    background: url('/static/image/background_img.jpg') !important;
+    font-weight: bold;
+    /* background-color: beige !important; */
 }
 .greetings {
     font-family: 'Cafe24Oneprettynight';

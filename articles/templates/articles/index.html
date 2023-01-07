@@ -1,2 +1,31 @@
 {% extends 'base.html' %}
-{% block content %}{% endblock content %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <h3 style="color:white">🌙누군가의 일기</h3>
+  <div class="d-flex container">
+    {% for diary in random_articles %}
+      <div class="article m-5 p-5" onclick="location.href='{% url 'articles:create_diary' %}'" style="color:white; border: 1px solid white">
+        <h5>게시물번호:
+          {{ diary.pk }}</h5>
+        <p>제목:
+          {{ diary.title }}</p>
+        <p>글내용:
+          {{ diary.content }}
+        </p>
+        <p>작성일자:
+          {{ diary.created_date | timesince }}
+          전
+        </p>
+        <p>수정일자:
+          {{ diary.updated_date | timesince }}
+          전
+        </p>
+        <p>해시태그:
+          {{ diary.hashtag }}</p>
+      </div>
+    {% endfor %}
+
+  </div>
+{% endblock content %}
