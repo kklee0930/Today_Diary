@@ -9,11 +9,13 @@ class DiaryForm(ModelForm):
             'title',
             'content',
             'hashtag',
+            'image',
         ]
         labels = {
             'title': '✍️제목',
             'content': '📝내용',
             'hashtag': '🏷️태그',
+            'image': '📷사진',
         }
         widgets = {
             'title': forms.TextInput(

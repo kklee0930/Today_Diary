@@ -20,9 +20,13 @@
     font-family: 'Cafe24Oneprettynight';
 }
 body {
-    background: url('/static/image/background_img.jpg');
+    background: url('/static/images/background_img.jpg');
     background-size: cover;
     /* font-family: 'Cafe24Oneprettynight'; */
+}
+header {
+    position: sticky;
+    top: 0px;
 }
 .navbar-custom {
     background-color: #C4BEE2;
@@ -45,6 +49,7 @@ body {
 .submit-btn {
     position: absolute;
     right: 0px;
+    top: 7px;
 }
 .nav-links {
     margin-left: 30px;

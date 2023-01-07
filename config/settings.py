@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # EXTERNAL APPS
     'django_extensions',
     'django_bootstrap5',
+    'django_summernote',
+    'imagekit',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -138,3 +140,6 @@ STATIC_ROOT = 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

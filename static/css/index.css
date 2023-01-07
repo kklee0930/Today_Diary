@@ -1,3 +1,24 @@
 .article {
     cursor:pointer;
+    color:white; 
+    border: 1px solid white;
+}
+.diary-title{
+    color: white;
+    text-decoration: none;
+}
+.create-btn {
+    background-color: #c4bee2;
+    border: 0px;
+    border-radius: 10px;
+    /* font-weight: bold; */
+    /* box-shadow: 0px 0px 30px #c4bee2; */
+}
+.create-btn:hover{
+    box-shadow: 0px 0px 30px #c4bee2;
+    font-weight: bold;
+}
+.thumbnail{
+    border: 1px solid white !important;
+    border-radius: 10px !important;
 }

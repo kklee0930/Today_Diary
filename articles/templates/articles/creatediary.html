@@ -6,7 +6,7 @@
   <div class="wrapper d-flex justify-content-center align-items-center">
     <div class="form-div w-50 p-4">
       <h5 class="text-center">🌙당신의 이야기를 들려주세요.</h5>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% bootstrap_button button_type="submit" button_class="create-btn mt-5 container" content="✍️작성완료" %}

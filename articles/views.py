@@ -9,7 +9,7 @@ def index(request):
     recent_articles = DiaryArticle.objects.filter(created_date__gte=datetime.now()-timedelta(days=3)) # 최근 3일 간의 게시물만 포함
     random_articles = []
     while True:
-        if len(random_articles) >= 2:
+        if len(random_articles) >= 4:
             break
         rand_article = random.choice(recent_articles)
         if rand_article not in random_articles:
@@ -22,7 +22,7 @@ def index(request):
     
 def create_diary(request):
     if request.method == 'POST':
-        form = DiaryForm(request.POST)
+        form = DiaryForm(request.POST, request.FILES)
         
         if form.is_valid():
             article = form.save(commit=False)
