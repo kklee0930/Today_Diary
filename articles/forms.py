@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import DiaryArticle
+from django_summernote.widgets import SummernoteWidget
 
 class DiaryForm(ModelForm):
     class Meta:
@@ -15,7 +16,7 @@ class DiaryForm(ModelForm):
             'title': '✍️제목',
             'content': '📝내용',
             'hashtag': '🏷️태그',
-            'image': '📷사진',
+            'image': '📷썸네일사진',
         }
         widgets = {
             'title': forms.TextInput(
@@ -23,9 +24,13 @@ class DiaryForm(ModelForm):
                     'placeholder': '제목을 입력하세요!'
                 }
             ),
-            'content': forms.TextInput(
+            'content': SummernoteWidget(
                 attrs={
-                    'placeholder': '내용을 입력하세요!'
+                    'placeholder': '내용을 입력하세요!',
+                    'summernote': {
+                        'width': '100%',
+                        'height': '380px',
+                    }
                 }
             ),
             'hashtag': forms.TextInput(

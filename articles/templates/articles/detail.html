@@ -7,10 +7,12 @@
   <h2>게시물번호:
     {{ diary_article.pk }}</h2>
   <h3>
-    {{ diary_article.created_date }}</h3>
+    {{ diary_article.created_date | date:"Y-m-d" }}</h3>
   <p>
-    <img src="{{ diary_article.image.url }}" alt="">
-    {{ diary_article.content }}
+    {% if diary_article.image.url == True %}
+      <img src="{{ diary_article.image.url }}" alt="">
+    {% endif %}
+    {{ diary_article.content | safe }}
   </p>
   <p>
     👍{{ diary_article.likes }}

@@ -17,9 +17,8 @@
           {{ diary.pk }}</h5>
         <p class="mt-4">제목:
           {{ diary.title }}</p>
-        <p class="mt-4">글내용:
-          {{ diary.content }}
-        </p>
+        <p class="index-content mt-4">글내용:
+          {{ diary.content | safe | truncatewords:"2" | cut:"src" }}</p>
         <p class="mt-4">작성일자:
           {{ diary.created_date | timesince }}
           전
