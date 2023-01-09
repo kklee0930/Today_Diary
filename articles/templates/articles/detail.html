@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+  <h1>{{ diary_article.title }}</h1>
+  <h2>게시물번호:
+    {{ diary_article.pk }}</h2>
+  <h3>
+    {{ diary_article.created_date }}</h3>
+  <p>
+    <img src="{{ diary_article.image.url }}" alt="">
+    {{ diary_article.content }}
+  </p>
+  <p>
+    👍{{ diary_article.likes }}
+    😍{{ diary_article.hearts }}
+    🤣{{ diary_article.funny }}
+    😢{{ diary_article.sad }}
+  </p>
+  <h5>
+    {{ diary_article.hashtag }}</h5>
+
+{% endblock content %}

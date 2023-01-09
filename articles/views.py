@@ -38,8 +38,12 @@ def create_diary(request):
     
     return render(request, 'articles/creatediary.html', context) # 이슈 발생시 다시 돌아가기
 
-# def detail(request, pk):
-#     context = {
-        
-#     }
-#     return render(request, 'articles/', context)
+def detail(request, pk):
+    diary_article = DiaryArticle.objects.get(pk=pk)
+
+    diary_article.hits += 1
+    
+    context = {
+        'diary_article': diary_article,
+    }
+    return render(request, 'articles/detail.html', context)
