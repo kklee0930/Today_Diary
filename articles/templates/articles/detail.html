@@ -3,24 +3,49 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-  <h1>{{ diary_article.title }}</h1>
-  <h2>게시물번호:
-    {{ diary_article.pk }}</h2>
-  <h3>
-    {{ diary_article.created_date | date:"Y-m-d" }}</h3>
-  <p>
-    {% if diary_article.image.url == True %}
-      <img src="{{ diary_article.image.url }}" alt="">
-    {% endif %}
-    {{ diary_article.content | safe }}
-  </p>
-  <p>
-    👍{{ diary_article.likes }}
-    😍{{ diary_article.hearts }}
-    🤣{{ diary_article.funny }}
-    😢{{ diary_article.sad }}
-  </p>
-  <h5>
-    {{ diary_article.hashtag }}</h5>
+      <div class="wrapper container mt-5">
+        <div class="title text-center pt-5">
+          <h1>{{ diary_article.title }}</h1>
+        </div>
+
+        {% comment %} <h2>게시물번호:
+          {{ diary_article.pk }}</h2> {% endcomment %}
+          
+        <h3 class="text-end px-5">
+          {{ diary_article.created_date | date:"Y-m-d" }}</h3>
+
+          {% if diary_article.image.url == True %}
+            <img src="{{ diary_article.image.url }}" alt="">
+          {% endif %}
+          
+          {% if diary_article.content.count >= 15 %}
+          <p class="px-5 p-5">
+            {{ diary_article.content | safe }}
+          </p>
+          {% else %}
+            <p class="text-center p-5">
+              {{ diary_article.content | safe }}
+            </p>
+          {% endif %}
+          
+        <p class="text-end px-5 py-5">
+          <a class="emotion text-decoration-none" href="">👍{{ diary_article.likes }}&nbsp;&nbsp;&nbsp;</a>
+          <a class="emotion text-decoration-none" href="">😍{{ diary_article.hearts }}&nbsp;&nbsp;&nbsp;</a>
+          <a class="emotion text-decoration-none" href="">🤣{{ diary_article.funny }}&nbsp;&nbsp;&nbsp;</a>
+          <a class="emotion text-decoration-none" href="">😢{{ diary_article.sad }}</a>
+        </p>
+        <h5 class="text-center pb-5">
+          {{ diary_article.hashtag }}#test #test #test</h5>
+        <div class="divider container"></div>
+        <div class="comment-div">
+          {% if comments == False %}
+            <p>댓글이 없습니다.</p>
+            {% else %}
+            <p>{{ comments.counts }}개의 댓글이 있어요.</p>
+          {% endif %}
+
+          
+        </div>
+      </div>
 
 {% endblock content %}

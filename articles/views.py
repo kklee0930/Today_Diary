@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import DiaryForm
-from .models import DiaryArticle
+from .forms import DiaryForm, CommentForm
+from .models import DiaryArticle, Comments
 from datetime import datetime, timedelta
 import random
 
@@ -40,10 +40,23 @@ def create_diary(request):
 
 def detail(request, pk):
     diary_article = DiaryArticle.objects.get(pk=pk)
-
+    comment_form = CommentForm()
     diary_article.hits += 1
     
-    context = {
+    try:
+        comments = Comments.objects.get(pk=pk)
+        context = {
         'diary_article': diary_article,
-    }
-    return render(request, 'articles/detail.html', context)
+        'comment_form': comment_form,
+        'comments': comments,
+        }
+        return render(request, 'articles/detail.html', context)
+    
+    except:
+        comments = False
+        context = {
+            'diary_article': diary_article,
+            'comment_form': comment_form,
+            'comments': comments,
+        }
+        return render(request, 'articles/detail.html', context)

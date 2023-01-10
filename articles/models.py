@@ -1,7 +1,7 @@
 from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import Thumbnail
-
+from django.conf import settings
 # Create your models here.
 class DiaryArticle(models.Model):
     title = models.CharField(max_length=50)
@@ -21,3 +21,11 @@ class DiaryArticle(models.Model):
     funny = models.PositiveIntegerField(default=0, verbose_name='웃겨요')
     sad = models.PositiveIntegerField(default=0, verbose_name='슬퍼요')
     hits = models.PositiveIntegerField(default=0, verbose_name='조회수')
+    
+class Comments(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    diary_article = models.ForeignKey(DiaryArticle, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=150)
+    likes = models.PositiveIntegerField(default=0, verbose_name='공감')
+    comment_created_date = models.DateTimeField(auto_now_add=True)
+    comment_updated_date = models.DateTimeField(auto_now=True)
