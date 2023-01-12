@@ -3,30 +3,40 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-      <div class="wrapper container mt-5">
-        <div class="title text-center pt-5">
-          <h1>{{ diary_article.title }}</h1>
+      <div class="wrapper mt-5">
+        <div class="title-box d-flex">
+          <h1 class="title-h1 p-1">제목</h1>
+          <div class="d-flex flex-grow-1 justify-content-between">
+              <h1 class="article-title p-1">{{ diary_article.title }}</h1>
+              <h3 class="weather-title p-1">오늘의 날씨: ☀️</h3>
+          </div>
         </div>
 
         {% comment %} <h2>게시물번호:
           {{ diary_article.pk }}</h2> {% endcomment %}
           
-        <h3 class="text-end px-5">
+        <h3 class="text-end px-5 my-3">
           {{ diary_article.created_date | date:"Y-m-d" }}</h3>
 
           {% if diary_article.image.url == True %}
-            <img src="{{ diary_article.image.url }}" alt="">
-          {% endif %}
-          
-          {% if diary_article.content.count >= 15 %}
-          <p class="px-5 p-5">
-            {{ diary_article.content | safe }}
-          </p>
+              <img src="{{ diary_article.image.url }}" alt="">
           {% else %}
-            <p class="text-center p-5">
-              {{ diary_article.content | safe }}
-            </p>
+            <div class="img-div w-75 m-auto text-center">
+              <img src="{% static 'images/dummy_img.jpg' %}" alt="">
+            </div>
           {% endif %}
+
+          <div class="diary-content mt-5">
+            {% if diary_article.content.count >= 20 %}
+            <div class="px-5 p-5">
+              {{ diary_article.content | safe }}
+            </div>
+            {% else %}
+            <div class="text-center p-5">
+              {{ diary_article.content | safe }}
+            </div>
+            {% endif %}
+          </div>
           
         <p class="text-end px-5 py-5">
           <a class="emotion text-decoration-none" href="">👍{{ diary_article.likes }}&nbsp;&nbsp;&nbsp;</a>
@@ -36,15 +46,25 @@
         </p>
         <h5 class="text-center pb-5">
           {{ diary_article.hashtag }}#test #test #test</h5>
-        <div class="divider container"></div>
-        <div class="comment-div">
-          {% if comments == False %}
+        <div class="divider container mb-3"></div>
+        <div class="comment-div text-center">
+          {% if comments.count == 0 %}
             <p>댓글이 없습니다.</p>
-            {% else %}
-            <p>{{ comments.counts }}개의 댓글이 있어요.</p>
+          {% else %}
+            <p>{{ comments.count }}개의 댓글이 있어요.</p>
           {% endif %}
+        </div>
+        <form class="container comment-form px-5">
+          {% csrf_token %}
+          {% bootstrap_form form %} {% bootstrap_button button_type="submit" button_class="comment-btn" content="✒️댓글달기" %}
+        </form>
 
-          
+        <div class="container text-center mt-5">
+          {% for comment in comments %}
+              <p>{{ comment.comment }}</p>
+              <p>{{ comment.likes }}</p>
+              <p>{{ comment.comment_created_date | date:"Y-m-d" }}</p>
+          {% endfor %}
         </div>
       </div>
 

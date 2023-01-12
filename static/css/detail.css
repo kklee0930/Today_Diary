@@ -1,7 +1,8 @@
 .wrapper {
     background-color: rgb(255,255,255, 0.8);
     min-height: 85vh;
-    width: 100%;
+    width: 55%;
+    margin: 0 auto;
     /* margin-right: auto;
     margin-left: auto; */
     /* margin-top: 5%; */
@@ -9,10 +10,39 @@
     /* text-align: center; */
     
 }
+.title-box {
+    border-bottom: 1.6px solid black !important;
+    /* padding: 0px !important; */
+}
+.title-h1{
+    margin-bottom: 0px !important;
+    border-right: 1.6px solid black;
+    /* padding: 3px; */
+}
+.article-title {
+    margin-bottom: 0px !important;
+}
+.weather-title {
+    margin: auto 0;
+}
 .emotion {
     color: black !important;
 }
 .divider{
     width: 90% !important;
     border: 1px solid black !important;
+}
+.comment-form {
+    width: 90% !important;
+}
+.comment-btn {
+    background-color: #c4bee2 !important;
+
+}
+.comment-btn:hover {
+    box-shadow: 0 0 20px #6f5f90;
+}
+.diary-content {
+    border-top: 1.6px solid black;
+    border-bottom: 1.6px solid black;
 }

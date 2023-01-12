@@ -38,25 +38,25 @@ def create_diary(request):
     
     return render(request, 'articles/creatediary.html', context) # 이슈 발생시 다시 돌아가기
 
-def detail(request, pk):
-    diary_article = DiaryArticle.objects.get(pk=pk)
+def detail(request, article_id):
+    diary_article = DiaryArticle.objects.get(id=article_id)
+    comments = diary_article.comments_set.all()
     comment_form = CommentForm()
     diary_article.hits += 1
     
-    try:
-        comments = Comments.objects.get(pk=pk)
-        context = {
-        'diary_article': diary_article,
-        'comment_form': comment_form,
-        'comments': comments,
-        }
-        return render(request, 'articles/detail.html', context)
+    # try:
+    context = {
+    'diary_article': diary_article,
+    'form': comment_form,
+    'comments': comments,
+    }
+    return render(request, 'articles/detail.html', context)
     
-    except:
-        comments = False
-        context = {
-            'diary_article': diary_article,
-            'comment_form': comment_form,
-            'comments': comments,
-        }
-        return render(request, 'articles/detail.html', context)
+    # except:
+    #     comments = False
+    #     context = {
+    #         'diary_article': diary_article,
+    #         'form': comment_form,
+    #         'comments': comments,
+    #     }
+    #     return render(request, 'articles/detail.html', context)

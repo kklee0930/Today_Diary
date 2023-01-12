@@ -44,23 +44,24 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comments
         fields = [
-            'author',
+            # 'author',
             'comment',
-            'likes',
+            # 'likes',
             # 'comment_created_date',
             # 'comment_updated_date'
         ]
         labels = {
-            'author': '👤작성자',
-            'comment': '📜댓글내용',
-            'likes': '👍좋아요',
+            # 'author': '👤작성자',
+            'comment': '댓글로 공감해주세요',
+            # 'likes': '👍좋아요',
             # 'comment_created_date': '📆작성일',
             # 'comment_updated_date': '수정일',
         }
         widgets = {
             'comment': forms.TextInput(
                 attrs={
-                'placeholder': '매너 댓글 부탁드려요😊',
+                    # 'class': 'p-2',
+                    'placeholder': '매너 댓글 부탁드려요😊 (댓글은 최대 150자까지 작성이 가능해요)',
                 }
             ),
         }
