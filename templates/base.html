@@ -21,8 +21,10 @@
           <button class="btn submit-btn" type="submit">🔍</button>
         </div>
         <div class="nav-links">
-          <button class="nav-mypage">마이페이지</button>
-          <button class="nav-logout">로그아웃</button>
+          <button class="nav-user">🖐️환영해요,
+            {{ user }}님.</button>
+          <button onclick="location.href='{% url 'accounts:userpage' %}'" class="nav-mypage">마이페이지</button>
+          <button onclick="location.href='{% url 'accounts:logout' %}'" class="nav-logout">로그아웃</button>
         </div>
       </nav>
     </header>

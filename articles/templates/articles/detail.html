@@ -3,7 +3,7 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/detail.css' %}">
-      <div class="wrapper mt-5">
+      <div class="wrapper my-5">
         <div class="title-box d-flex">
           <h1 class="title-h1 p-1">제목</h1>
           <div class="d-flex flex-grow-1 justify-content-between">
@@ -21,31 +21,33 @@
           {% if diary_article.image.url == True %}
               <img src="{{ diary_article.image.url }}" alt="">
           {% else %}
-            <div class="img-div w-75 m-auto text-center">
-              <img src="{% static 'images/dummy_img.jpg' %}" alt="">
+            <div class="img-div m-auto text-center">
+              {% comment %} <img class="dummy-img" src="{% static 'images/dummy_img.jpg' %}" alt=""> {% endcomment %}
+              {% comment %} 이미지가 없어요... {% endcomment %}
             </div>
           {% endif %}
 
-          <div class="diary-content mt-5">
-            {% if diary_article.content.count >= 20 %}
-            <div class="px-5 p-5">
-              {{ diary_article.content | safe }}
-            </div>
-            {% else %}
-            <div class="text-center p-5">
-              {{ diary_article.content | safe }}
-            </div>
-            {% endif %}
+          {% comment %} <div class="diary-content mt-5"> {% endcomment %}
+          {% if diary_article.content.count >= 20 %}
+          <div class="px-5 p-5">
+            {{ diary_article.content | safe }}
           </div>
+          {% else %}
+          <div class="text-center p-5">
+            {{ diary_article.content | safe }}
+          </div>
+          {% endif %}
+          {% comment %} </div> {% endcomment %}
           
-        <p class="text-end px-5 py-5">
-          <a class="emotion text-decoration-none" href="">👍{{ diary_article.likes }}&nbsp;&nbsp;&nbsp;</a>
-          <a class="emotion text-decoration-none" href="">😍{{ diary_article.hearts }}&nbsp;&nbsp;&nbsp;</a>
-          <a class="emotion text-decoration-none" href="">🤣{{ diary_article.funny }}&nbsp;&nbsp;&nbsp;</a>
-          <a class="emotion text-decoration-none" href="">😢{{ diary_article.sad }}</a>
+        <p class="text-end px-5 pt-5">
+          <a class="emotion text-decoration-none p-1" href="">&nbsp;&nbsp;👍{{ diary_article.likes }}&nbsp;&nbsp;</a>&nbsp;&nbsp;
+          <a class="emotion text-decoration-none p-1" href="">&nbsp;&nbsp;😍{{ diary_article.hearts }}&nbsp;&nbsp;</a>&nbsp;&nbsp;
+          <a class="emotion text-decoration-none p-1" href="">&nbsp;&nbsp;🤣{{ diary_article.funny }}&nbsp;&nbsp;</a>&nbsp;&nbsp;
+          <a class="emotion text-decoration-none p-1" href="">&nbsp;&nbsp;😢{{ diary_article.sad }}&nbsp;&nbsp;</a>&nbsp;&nbsp;
         </p>
-        <h5 class="text-center pb-5">
-          {{ diary_article.hashtag }}#test #test #test</h5>
+
+        <h5 class="text-end mx-5">
+          {{ diary_article.hashtag }}#test #test #test #test #test</h5>
         <div class="divider container mb-3"></div>
         <div class="comment-div text-center">
           {% if comments.count == 0 %}

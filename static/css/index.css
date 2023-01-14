@@ -1,7 +1,14 @@
 .article {
     cursor:pointer;
-    color:white; 
-    border: 1px solid white;
+    color: black; 
+    /* border: 1px solid #958f93; */
+    border-radius: 5px;
+    background-color: #958f93;
+    width: 50%;
+    height: auto;
+}
+.article:hover{
+    background: rgba(149, 143, 147, 0.7);
 }
 .diary-title{
     color: white;
@@ -19,9 +26,27 @@
     font-weight: bold;
 }
 .thumbnail{
-    border: 1px solid white !important;
+    /* border: 1px solid white !important; */
     border-radius: 10px !important;
+    width: 150px;
+    height: 180px;
 }
 .index-content {
     font-size: 1em;
+}
+.no-article-div{
+    min-height: 60vh;
+}
+.no-article {
+    color: white;
+    /* min-height: 50vh; */
+}
+.article-header {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.article-header h6 {
+    margin: 0;
 }

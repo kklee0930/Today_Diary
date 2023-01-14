@@ -11,32 +11,65 @@
   </div>
   <div class="container">
     <div class="row">
-      {% for diary in random_articles %}
-        <div class="article col m-4 p-5 w-75" onclick="location.href='{% url 'articles:detail' diary.pk %}'">
-          {% if diary.image.url != '' %}
-            <img class="thumbnail" src="{{ diary.image.url }}" alt="{{ diary.image }}">
-          {% endif %}
-          <h5 class="mt-4">게시물번호:
-            {{ diary.pk }}</h5>
-          <p class="mt-4">제목:
-            {{ diary.title }}</p>
-          <p class="index-content mt-4">글내용:
-            {{ diary.content | safe | truncatewords:"2" | cut:"src" }}</p>
-          <p class="mt-4">작성일자:
-            {{ diary.created_date | timesince }}
-            전
-          </p>
-          <p class="mt-4">수정일자:
-            {{ diary.updated_date | timesince }}
-            전
-          </p>
-          <p class="mt-4">해시태그:
-            {{ diary.hashtag }}</p>
+
+      {% if random_articles == False %}
+
+        <div class="no-article-div d-flex flex-column align-items-center justify-content-center">
+          <img src="{% static 'images/sorry_img.png' %}" alt="">
+          <h3 class="no-article">지금은 표시할 게시물이 없어요...</h3>
         </div>
-      {% endfor %}
+
+      {% else %}
+
+        <div class="container">
+          <div class="d-flex justify-content-center">
+            {% for diary in random_articles %}
+              <div class="article col-md-3 m-3" onclick="location.href='{% url 'articles:detail' diary.pk %}'">
+                {% if diary.image.url != '' %}
+                  <div class="text-center p-3">
+                    <img class="thumbnail" src="{{ diary.image.url }}" alt="{{ diary.image }}">
+                  </div>
+                {% else %}
+                  <div class="text-center p-3">
+                    <img class="thumbnail" src="{% static 'images/sorry_img.png' %}" alt="dummy_img">
+                  </div>
+                {% endif %}
+                <div class="px-3">
+                  <div class="article-header d-flex justify-content-evenly">
+                    <h6 class="article-pk p-1">📄No:
+                      {{ diary.pk }}</h6>
+                    {% comment %} <h6></h6> {% endcomment %}
+                    <h6 class="article-hits p-1">👀조회수:
+                      {{ diary.hits }}</h6>
+                    <h6 class="article-comments p-1">🗨️{{ diary.comment }}개</h6>
+                  </div>
+                    <p class="mt-2">✏️제목:
+                      {{ diary.title | truncatechars:20 }}</p>
+                    <p class="index-content">
+                      📄글내용:
+                      {{ diary.content | truncatechars:20 | striptags }}
+                    </p>
+                    <p class="">📅작성일자:
+                      {{ diary.created_date | timesince }}
+                      전
+                    </p>
+                    <p class="">📆수정일자:
+                      {{ diary.updated_date | timesince }}
+                      전
+                    </p>
+                    <p class="">🏷️해시태그:
+                      {{ diary.hashtag |truncatechars:15}}</p>
+                    <p class="text-end">👍{{ diary.likes }}&nbsp;😍{{ diary.hearts }}&nbsp;🤣{{ diary.funny }}&nbsp;😢{{ diary.sad }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
     </div>
   </div>
-  <div class="text-center mt-5">
+  <div class="text-center my-5">
     <button class="create-btn p-3" onclick="location.href='{% url 'articles:create_diary' %}';">✍️일기 쓰러가기</button>
   </div>
 {% endblock content %}

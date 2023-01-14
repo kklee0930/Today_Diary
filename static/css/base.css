@@ -56,12 +56,35 @@ header {
     margin-right: 30px;
 }
 .nav-logout{
-    border: 1px solid #bbb;
+    border: 1px solid #C4BEE2;
+    background-color: #C4BEE2;
+    box-shadow: 0px 0px 30px #6f5f90;
     padding: 7px;
     margin-left: 5px;
 }
+.nav-logout:hover{
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #6f5f90;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+}
 .nav-mypage{
-    border: 1px solid #bbb;
+    border: 1px solid #C4BEE2;
+    background-color: #C4BEE2;
+    box-shadow: 0px 0px 30px #6f5f90;
     padding: 7px;
     margin-right: 5px;
+}
+.nav-mypage:hover{
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #6f5f90;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
+}
+.nav-user {
+    border: none;
+    background-color: #C4BEE2;
+    margin-right: 3rem;
 }
